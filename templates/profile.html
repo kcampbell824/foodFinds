@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<title> My Profile </title>
+
+<body class="home">
+
+    <img src="/static/images/Logo.png" width="200" height="200"
+        style='position:inherit; float:left; margin-left:0px; transform: translate(-2vh, -7vh);'>
+    <!-- <h2 style="margin-right:10px; margin-top: 5px;float:right;">my account</h2> -->
+    <div style="margin-right:10px; margin-top: -5px; top:1px; bottom: 3px;float:right;" class="dropdownbtn">
+        <button class="dropbtn">my account</button>
+        <div class="dropdown-content">
+            <a href="/home">home</a>
+            <!-- <a href="#">Link 2</a> -->
+            <a href="/logout">log out</a>
+        </div>
+    </div>
+
+    <!--   <div class="searchDiv">
+        <img src="/static/images/Logo.png" width="200" height="200"
+            style='position:inherit; float:left; margin-left:0px;'>
+-->
+    <br> <br>
+    <br> <br>
+    <br>
+    <!-- <br> <br> <br> -->
+    <!-- <br> -->
+    <!-- <h2>Greetings {{session.currentUser}}</h2> -->
+    <!-- <br>
+        <br> <br> -->
+    <!-- {% if session.logged_in %}
+        <h2>Greetings {{session.currentUser}}</h2>
+        {% endif %} -->
+    <!-- <h2> hi</h2> -->
+    <!-- <form method="POST" action="/save_cusines"> -->
+    <!-- <input class="searchbar" type="text" placeholder="Find Recipes" name="recipe"> -->
+    <!-- <br><br>
+            <select class='dropdown' name="cuisine" id="cuisine">
+                <option value="">Save a Cuisine</option>
+                <option value="African">African</option>
+                <option value="American">American</option>
+                <option value="British">British</option>
+                <option value="Cajun">Cajun</option>
+                <option value="Caribbean">Caribbean</option>
+                <option value="Chinese">Chinese</option>
+                <option value="Eastern European">Eastern European</option>
+                <option value="European">European</option>
+                <option value="French">French</option>
+                <option value="German">German</option>
+                <option value="Greek">Greek</option>
+                <option value="Indian">Indian</option>
+                <option value="Irish">Irish</option>
+                <option value="Italian">Italian</option>
+                <option value="Japanese">Japanese</option>
+                <option value="Jewish">Jewish</option>
+                <option value="Korean">Korean</option>
+                <option value="Latin American">Latin American</option>
+                <option value="Mediterranean">Mediterranean</option>
+                <option value="Mexican">Mexican</option>
+                <option value="Middle Eastern">Middle Eastern</option>
+                <option value="Nordic">Nordic</option>
+                <option value="Southern">Southern</option>
+                <option value="Spanish">Spanish</option>
+                <option value="Thai">Thai</option>
+                <option value="Vietnamese">Vietnamese</option>
+            </select>
+            <br> <br>
+            <input class='homebutton' type="submit" value="save">
+        </form>
+        <br><br>
+        <form method="POST" action="/save_intolerances">
+            <select class='dropdown' name="intolerance" id="intolerance">
+                <option value="">Save an Intolerance</option>
+                <option value="Dairy">Dairy</option>
+                <option value="Egg">Egg</option>
+                <option value="Gluten">Gluten</option>
+                <option value="Grain">Grain</option>
+                <option value="Peanut">Peanut</option>
+                <option value="Seafood">Seafood</option>
+                <option value="Sesame">Sesame</option>
+                <option value="Shellfish">Shellfish</option>
+                <option value="Soy">Soy</option>
+                <option value="Sulfite">Sulfite</option>
+                <option value="Tree Nut">Tree Nut</option>
+                <option value="Wheat">Wheat</option>
+            </select>
+            <br><br>
+            <input class='homebutton' type="submit" value="save">
+
+        </form>
+        <br> -->
+    <!-- <form method="POST" action="/search_ingredients">
+            <input class="searchbar" type="text" placeholder="Find Ingredients" name="ingredient">
+            <br><br>
+            <input class='homebutton' type="submit" value="search">
+        </form> -->
+    <!-- </div>
+
+    <div class='resultsDiv'>
+        <h1></h1>
+        {%with messages = get_flashed_messages()%}
+        {%if messages%}
+        <ul style='margin-left: -400px;' id="flashes" class=flashes>
+            {% for message in messages %}
+            <h2> {{message }}</h2>
+            {%endfor%}
+        </ul>
+        {%endif%}
+        {%endwith%}
+
+        {%if keyword%}
+        <h2 style='margin-left:-450px;'><b>Search Results for '{{keyword}}'</b></h2>
+        {%endif%} -->
+
+    <!-- {%with messages = get_flashed_messages()%}
+        {%if messages%}
+        <ul id="flashes" class=flashes>
+            {% for message in messages %}
+            <h2> {{message }}</h2>
+            {%endfor%}
+        </ul>
+        {%endif%}
+        {%endwith%} -->
+
+
+    <!-- {%if recipeInfo%}
+
+        {%for recipe in recipeInfo%}
+        <div class="card">
+
+            <div class="container"> -->
+    <!-- <form action="/edit" method="post" role="form">
+                    <input type="hidden" id="index" name="index" value="{{ index }}">
+                    <input type="submit" name="submit" value="Change Label" class="btn btn-info">
+                </form> -->
+    <!-- <p>{{recipe['name']}}</p>
+                <img class='search_image' src="{{recipe['image']}}">
+
+                <form method="POST" action="/like_recipe">
+
+                    <input class='homebutton' type="submit" value="like">
+                    <input type="hidden" name="recipeName" value="{{recipe['name']}}">
+                </form>
+                <form method="POST" action="/dislike_recipe">
+
+                    <input class='homebutton' type="submit" value="dislike">
+                    <input type="hidden" name="recipeName" value="{{recipe['name']}}">
+                </form>
+            </div>
+        </div>
+        {%endfor%}
+
+        {%endif%}
+
+
+        {%if ingredientInfo%}
+
+        {%for ingredient in ingredientInfo%}
+        <div class="card">
+
+            <div class="container">
+
+                <p>{{ingredient['name']}}</p>
+                <img class='ingredient_image' src="{{ingredient['image']}}">
+
+                <form method="POST" action="/like_ingredient">
+                    <input class='homebutton' type="submit" value="like">
+                    <input type="hidden" name="ingredientName" value="{{ingredient['name']}}">
+                </form>
+                <form method="POST" action="/dislike_ingredient">
+                    <input class='homebutton' type="submit" value="dislike">
+                    <input type="hidden" name="ingredientName" value="{{ingredient['name']}}">
+                </form>
+            </div>
+        </div>
+        {%endfor%}
+        {%endif%}
+
+    </div> -->
+
+    <!-- <h1> sign in to continue saving your favorite artists</h1> -->
+
+    <!-- <form method="POST" action="/">
+        <input type="text" placeholder="enter your username" name="username" required>
+     <br><br>
+        <input type="password" placeholder="Enter your password" name="password"> -->
+    <!-- <br><br><br>
+        <input class='button' type="submit" value="submit">
+    </form> -->
+
+    <!-- <h2><a href="/signup">don't have an account?</a></h2>
+    {%with messages = get_flashed_messages()%}
+    {%if messages%}
+    <ul id="flashes" class=flashes>
+        {% for message in messages %}
+        <h2> {{message }}</h2>
+        {%endfor%}
+    </ul>
+    {%endif%}
+    {%endwith%} -->
+    <div class="tab">
+        <!-- <button class="tablinks" onclick="openCity(event, 'Liked Recipes')">Liked Recipes</button> -->
+        <!-- <button class="tablinks" onclick="openCity(event, 'Liked Ingredients')">Liked Ingredients</button> -->
+        <button class="tablinks" onclick="openCity(event, 'Cuisines')" id="defaultOpen">Save a Cuisine</button>
+        <button class="tablinks" onclick="openCity(event, 'Intolerances')">Save an Intolerance</button>
+        <!-- <button class="tablinks" onclick="openCity(event, 'Disliked Recipes')">Disliked Recipes</button> -->
+        <!-- <button class="tablinks" onclick="openCity(event, 'Disliked Ingredients')">Disliked Ingredients</button> -->
+    </div>
+
+    <!-- Tab content -->
+    <div id="Liked Recipes" class="tabcontent">
+        <h3 style="transform: translate(-15vh, -1vh);">Liked Recipes</h3>
+        {%if likedRecipes%}
+        {%for recipe in likedRecipes%}
+        <h4>{{recipe}}</h4>
+        {%endfor%}
+        {%endif%}
+        <!-- <p>London is the capital city of England.</p> -->
+    </div>
+
+    <div id="Liked Ingredients" class="tabcontent">
+        <h3 style="transform: translate(-15vh, -1vh);">Liked Ingredients</h3>
+        {%if likedIngredients%}
+        {%for ingredient in likedIngredients%}
+        <h4>{{ingredient}}</h4>
+        {%endfor%}
+        {%endif%}
+        <!-- <p>Paris is the capital of France.</p> -->
+    </div>
+
+    <div id="Cuisines" class="tabcontent">
+        <h3 style="transform: translate(-15vh, -1vh);">Save a Cuisine</h3>
+        <!-- <p>Tokyo is the capital of Japan.</p> -->
+        {%if cuisine%}
+        {%for c in cuisine%}
+        <h4>{{c}}</h4>
+        {%endfor%}
+        {%endif%}
+        <br>
+        <form style="transform: translate(-15vh, -1vh);" method="POST" action="/save_cuisines">
+            <!-- <input class="searchbar" type="text" placeholder="Find Recipes" name="recipe"> -->
+            <!-- <br><br> -->
+
+            <select style="transform: translate(15vh, -1vh);" class='dropdown' name="cuisine" id="cuisine">
+                <option value="">Select Cuisine</option>
+                <option value="African">African</option>
+                <option value="American">American</option>
+                <option value="British">British</option>
+                <option value="Cajun">Cajun</option>
+                <option value="Caribbean">Caribbean</option>
+                <option value="Chinese">Chinese</option>
+                <option value="Eastern European">Eastern European</option>
+                <option value="European">European</option>
+                <option value="French">French</option>
+                <option value="German">German</option>
+                <option value="Greek">Greek</option>
+                <option value="Indian">Indian</option>
+                <option value="Irish">Irish</option>
+                <option value="Italian">Italian</option>
+                <option value="Japanese">Japanese</option>
+                <option value="Jewish">Jewish</option>
+                <option value="Korean">Korean</option>
+                <option value="Latin American">Latin American</option>
+                <option value="Mediterranean">Mediterranean</option>
+                <option value="Mexican">Mexican</option>
+                <option value="Middle Eastern">Middle Eastern</option>
+                <option value="Nordic">Nordic</option>
+                <option value="Southern">Southern</option>
+                <option value="Spanish">Spanish</option>
+                <option value="Thai">Thai</option>
+                <option value="Vietnamese">Vietnamese</option>
+            </select>
+            <br> <br>
+            <input style="transform: translate(15vh, -1vh);" class='homebutton' type="submit" value="save">
+        </form>
+    </div>
+
+    <div style="text-align: center;" id="Intolerances" class="tabcontent">
+        <h3 style="transform: translate(-15vh, -1vh);">Select an Intolerance</h3>
+        {%if intolerance%}
+        {%for i in intolerance%}
+        <h4>{{i}}</h4>
+        {%endfor%}
+        {%endif%}
+        <!-- <p>Tokyo is the capital of Japan.</p> -->
+        <form style="transform: translate(15vh, -1vh);" method="POST" action="/save_intolerances">
+            <select style="transform: translate(-15vh, -1vh);" class='dropdown' name="intolerance" id="intolerance">
+                <option value="">Select Intolerance</option>
+                <option value="Dairy">Dairy</option>
+                <option value="Egg">Egg</option>
+                <option value="Gluten">Gluten</option>
+                <option value="Grain">Grain</option>
+                <option value="Peanut">Peanut</option>
+                <option value="Seafood">Seafood</option>
+                <option value="Sesame">Sesame</option>
+                <option value="Shellfish">Shellfish</option>
+                <option value="Soy">Soy</option>
+                <option value="Sulfite">Sulfite</option>
+                <option value="Tree Nut">Tree Nut</option>
+                <option value="Wheat">Wheat</option>
+            </select>
+            <br><br>
+            <input style="transform: translate(-15vh, -1vh);" class='homebutton' type="submit" value="save">
+
+        </form>
+    </div>
+
+    <div id="Disliked Recipes" class="tabcontent">
+        <h3 style="transform: translate(-15vh, -1vh);">Disliked Recipes</h3>
+        <!-- <p>Tokyo is the capital of Japan.</p> -->
+        {%if dislikedRecipes%}
+        {%for d_recipe in dislikedRecipes%}
+        <h4>{{d_recipe}}</h4>
+        {%endfor%}
+        {%endif%}
+    </div>
+
+    <div id="Disliked Ingredients" class="tabcontent">
+        <h3 style="transform: translate(-15vh, -1vh);">Disliked Ingredients</h3>
+        <!-- <p>Tokyo is the capital of Japan.</p> -->
+        {%if dislikedIngredients%}
+        {%for d_ingredient in dislikedIngredients%}
+        <h4>{{d_ingredient}}</h4>
+        {%endfor%}
+        {%endif%}
+    </div>
+
+
+    <script>
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+
+        function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+</body>
+
+</html>

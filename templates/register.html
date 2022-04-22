@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<title> Register </title>
+
+<body class="register">
+    {%with messages = get_flashed_messages()%}
+    {%if messages%}
+    <ul id="flashes" class=flashes>
+        {% for message in messages %}
+        <h1> {{message }}</h1>
+        {%endfor%}
+    </ul>
+    {%endif%}
+    {%endwith%}
+    <br>
+    <h1> create an account to begin discovering recipes</h1>
+
+    <br>
+    <form method="POST" action="/register">
+        <input type="text" placeholder="first name" name="firstname" required autocomplete="off">
+        <br><br>
+        <input type="text" placeholder="last name" name="lastname" required>
+        <br><br>
+        <input type="text" placeholder="email" name="email" required>
+        <br><br>
+        <input type="text" placeholder="create a username" name="username" required>
+        <br><br>
+        <input type="password" placeholder="enter a password" name="password">
+        <br><br><br>
+        <input class='button' type="submit" value="submit">
+    </form>
+
+    <br>
+    <h2><a href="/login">already have an account?</a></h2>
+
+</body>
+
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<title> Home </title>
+
+<body class="home">
+
+    <!-- {{session.currentUser}}<h2 style="margin-right:10px; margin-top: 5px;float:right;">my account</h2> -->
+    <div style="margin-right:10px; margin-top: -5px; top:1px; bottom: 3px;float:right;" class="dropdownbtn">
+        <button class="dropbtn">my account</button>
+        <div class="dropdown-content">
+            <a href="/profile">my profile</a>
+            <!-- <a href="#">Link 2</a> -->
+            <a href="/logout">log out</a>
+        </div>
+    </div>
+
+    <div class="searchDiv">
+        <img src="/static/images/Logo.png" width="200" height="200"
+            style='position:inherit; float:left; margin-left:0px;'>
+
+        <br> <br>
+        <br> <br>
+
+        <br> <br> <br>
+        <!-- <br> -->
+        <!-- <h2>Welcome back, {{session.currentUser}}</h2> -->
+        <br>
+        <br> <br>
+        <!-- {% if session.logged_in %}
+        <h2>Greetings {{session.currentUser}}</h2>
+        {% endif %} -->
+        <!-- <h2> hi</h2> -->
+        <form method="POST" action="/search_recipes">
+            <input class="searchbar" type="text" placeholder="Find Recipes" name="recipe" required>
+            <br><br>
+            <select class='dropdown' name="cuisine" id="cuisine">
+                <option value="">Select a Cuisine</option>
+                <option value="African">African</option>
+                <option value="American">American</option>
+                <option value="British">British</option>
+                <option value="Cajun">Cajun</option>
+                <option value="Caribbean">Caribbean</option>
+                <option value="Chinese">Chinese</option>
+                <option value="Eastern European">Eastern European</option>
+                <option value="European">European</option>
+                <option value="French">French</option>
+                <option value="German">German</option>
+                <option value="Greek">Greek</option>
+                <option value="Indian">Indian</option>
+                <option value="Irish">Irish</option>
+                <option value="Italian">Italian</option>
+                <option value="Japanese">Japanese</option>
+                <option value="Jewish">Jewish</option>
+                <option value="Korean">Korean</option>
+                <option value="Latin American">Latin American</option>
+                <option value="Mediterranean">Mediterranean</option>
+                <option value="Mexican">Mexican</option>
+                <option value="Middle Eastern">Middle Eastern</option>
+                <option value="Nordic">Nordic</option>
+                <option value="Southern">Southern</option>
+                <option value="Spanish">Spanish</option>
+                <option value="Thai">Thai</option>
+                <option value="Vietnamese">Vietnamese</option>
+            </select>
+            <br><br>
+            <select class='dropdown' name="intolerance" id="intolerance">
+                <option value="">Select an Intolerance</option>
+                <option value="Dairy">Dairy</option>
+                <option value="Egg">Egg</option>
+                <option value="Gluten">Gluten</option>
+                <option value="Grain">Grain</option>
+                <option value="Peanut">Peanut</option>
+                <option value="Seafood">Seafood</option>
+                <option value="Sesame">Sesame</option>
+                <option value="Shellfish">Shellfish</option>
+                <option value="Soy">Soy</option>
+                <option value="Sulfite">Sulfite</option>
+                <option value="Tree Nut">Tree Nut</option>
+                <option value="Wheat">Wheat</option>
+            </select>
+            <br><br>
+            <input class='homebutton' type="submit" value="search">
+
+        </form>
+        <br>
+        <form method="POST" action="/search_ingredients">
+            <input class="searchbar" type="text" placeholder="Find Ingredients" name="ingredient" required>
+            <br><br>
+            <input class='homebutton' type="submit" value="search">
+        </form>
+    </div>
+
+    <div class='resultsDiv'>
+        <h1></h1>
+        {%with messages = get_flashed_messages()%}
+        {%if messages%}
+        <ul style='margin-left: -400px;' id="flashes" class=flashes>
+            {% for message in messages %}
+            <h2> {{message }}</h2>
+            {%endfor%}
+        </ul>
+        {%endif%}
+        {%endwith%}
+
+        {%if keyword%}
+        <h2 style='margin-left:-450px;'><b>Search Results for '{{keyword}}'</b></h2>
+        {%endif%}
+
+        <!-- {%with messages = get_flashed_messages()%}
+        {%if messages%}
+        <ul id="flashes" class=flashes>
+            {% for message in messages %}
+            <h2> {{message }}</h2>
+            {%endfor%}
+        </ul>
+        {%endif%}
+        {%endwith%} -->
+
+
+        {%if recipeInfo%}
+
+        {%for recipe in recipeInfo%}
+        <div class="card">
+
+            <div class="container">
+                <!-- <form action="/edit" method="post" role="form">
+                    <input type="hidden" id="index" name="index" value="{{ index }}">
+                    <input type="submit" name="submit" value="Change Label" class="btn btn-info">
+                </form> -->
+                <p>{{recipe['name']}}</p>
+                <img class='search_image' src="{{recipe['image']}}">
+                <p>{{recipe['summary']}}</p>
+                <form method="POST" action="/like_recipe">
+                    <input class='homebutton' type="submit" value="like">
+                    <input type="hidden" name="recipeName" value="{{recipe['name']}}">
+                    <input type="hidden" name="recipeImage" value="{{recipe['image']}}">
+                </form>
+                <form method="POST" action="/dislike_recipe">
+                    <input class='homebutton' type="submit" value="dislike">
+                    <input type="hidden" name="recipeName" value="{{recipe['name']}}">
+                    <input type="hidden" name="recipeImage" value="{{recipe['image']}}">
+                </form>
+            </div>
+        </div>
+        {%endfor%}
+
+        {%endif%}
+
+
+        {%if ingredientInfo%}
+
+        {%for ingredient in ingredientInfo%}
+        <div class="card">
+
+            <div class="container">
+
+                <p>{{ingredient['name']}}</p>
+                <img class='ingredient_image' src="{{ingredient['image']}}">
+
+                <form method="POST" action="/like_ingredient">
+                    <input class='homebutton' type="submit" value="like">
+                    <input type="hidden" name="ingredientName" value="{{ingredient['name']}}">
+                </form>
+                <form method="POST" action="/dislike_ingredient">
+                    <input class='homebutton' type="submit" value="dislike">
+                    <input type="hidden" name="ingredientName" value="{{ingredient['name']}}">
+                </form>
+            </div>
+        </div>
+        {%endfor%}
+        {%endif%}
+
+    </div>
+
+    <!-- <h1> sign in to continue saving your favorite artists</h1> -->
+
+    <!-- <form method="POST" action="/">
+        <input type="text" placeholder="enter your username" name="username" required>
+     <br><br>
+        <input type="password" placeholder="Enter your password" name="password"> -->
+    <!-- <br><br><br>
+        <input class='button' type="submit" value="submit">
+    </form> -->
+
+    <!-- <h2><a href="/signup">don't have an account?</a></h2>
+    {%with messages = get_flashed_messages()%}
+    {%if messages%}
+    <ul id="flashes" class=flashes>
+        {% for message in messages %}
+        <h2> {{message }}</h2>
+        {%endfor%}
+    </ul>
+    {%endif%}
+    {%endwith%} -->
+
+</body>
+
+</html>
