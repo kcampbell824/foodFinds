@@ -1,3 +1,10 @@
+# General comment: There are some lines that look like print statements for debugging commented out in the code
+# If this is in active development & they're useful, definitely keep them in
+# But, once this is production-ready and/or the features with print statements are functional, they should probably be removed
+
+# General comment 2: The code itself has very useful variables names & for the most part I can gather what each major chunk does
+# Might be nice to add a short comment above each block to help new developers
+
 # from crypt import methods
 from app import app, db
 from models import (
@@ -49,7 +56,8 @@ def login():
 
     return flask.render_template("login.html")
 
-
+# Comment: Maybe suggest similar, available usernames if the user input is taken
+# I've seen this in other login UIs & it can streamline the username selection process for users
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if flask.request.method == "POST":
@@ -89,7 +97,7 @@ def home():
 
     return flask.render_template("home.html")
 
-
+# Comment: This could be streamlined if each feature is pulled when calling render_template, rather than storing in intermediate variables
 @login_required
 @app.route("/profile")
 def profile():
@@ -114,6 +122,7 @@ def profile():
     )
 
 
+# Comment: Might be nice to print something like "logout successful" before returning to login screen
 @app.route("/logout")
 @login_required
 def logout():
@@ -287,7 +296,8 @@ def save_cuisines():
 
     return flask.render_template("profile.html")
 
-
+# Comment: From a UI perspective, saying an intolerance has been liked might be confusing, since ideally they don't want to have that ingredient
+# Maybe the logged message could be "you've successfully recorded " + intolerance
 @login_required
 @app.route("/save_intolerances", methods=["POST", "GET"])
 def save_intolerance():
@@ -319,6 +329,8 @@ def save_intolerance():
 
 
 # app.run(debug=True)
+# Comment: You could make host & port command line arguments that the user can supply
+# Default values can be the values you set here, but if users have a desired port, this would make it easier than going into routes.py to specify the port
 if __name__ == "__main__":
     app.run(
         host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)), debug=True
